@@ -5,7 +5,7 @@ export class LoginDto {
   @IsString()
   @ApiProperty({
     type: 'string',
-    description: 'Login of the user',
+    description: 'E-mail of the user',
   })
   email: string;
 

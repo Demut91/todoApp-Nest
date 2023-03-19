@@ -1,35 +1,35 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsBoolean, IsOptional, IsString } from 'class-validator';
 
 export class TodoDto {
   @IsString()
   @ApiProperty({
-    example: 'Name of the task',
+    description: 'Name of the task',
   })
   title: string;
 
   @IsOptional()
   @IsString()
-  @ApiProperty({ example: 'Some description for task' })
+  @ApiProperty({ description: 'Some description for task' })
   description?: string;
 }
 
 export class TodoEditDto {
   @IsOptional()
   @IsString()
-  @ApiProperty({
-    example: 'Name of the task',
+  @ApiPropertyOptional({
+    description: 'Name of the task',
   })
   title?: string;
 
   @IsOptional()
   @IsString()
-  @ApiProperty({ example: 'Some description for task' })
+  @ApiPropertyOptional({ description: 'Some description for task' })
   description?: string;
 
   @IsOptional()
   @IsBoolean()
-  @ApiProperty({
+  @ApiPropertyOptional({
     type: 'boolean',
     description: 'Status: completed or not',
   })
