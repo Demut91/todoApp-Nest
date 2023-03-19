@@ -12,8 +12,8 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
   ): Promise<TypeOrmModuleOptions> => {
     return {
       type: 'postgres',
-      username: configService.get('DB_USER'),
-      password: configService.get('DB_PASS'),
+      username: configService.get('POSTGRES_USER'),
+      password: configService.get('POSTGRES_PASSWORD'),
       host: configService.get('DB_HOST'),
       port: +configService.get('DB_PORT'),
       database: configService.get('DB_NAME'),
@@ -28,11 +28,11 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
 
 export const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'postgres',
-  username: process.env.DB_USER,
-  password: process.env.DB_PASS,
+  username: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
   host: process.env.DB_HOST,
   port: +process.env.DB_PORT,
-  database: process.env.DB_NAME,
+  database: process.env.POSTGRES_DB,
   synchronize: true,
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   migrations: [__dirname + '/../migrations/*{.ts,.js}'],
