@@ -1,25 +1,24 @@
-import { IsEmail } from 'class-validator';
 import {
   BeforeInsert,
   Column,
   CreateDateColumn,
   Entity,
-  Generated,
   OneToMany,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-// import Todo from './Todo.entity';
 import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
+import Todo from './Todo.entity';
+import { IsEmail } from 'class-validator';
+import { AuthResponse } from 'src/types/response';
 
 @Entity()
 export default class User {
-  @Generated('increment')
+  @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({
-    primary: true,
-  })
+  @Column()
   name: string;
 
   @Column()
@@ -29,8 +28,8 @@ export default class User {
   @IsEmail()
   email: string;
 
-  // @OneToMany(() => Todo, (a) => a.author)
-  // todos: Todo[];
+  @OneToMany(() => Todo, (a) => a.author)
+  todos: Todo[];
 
   @CreateDateColumn()
   createdAt: Date;
@@ -40,16 +39,12 @@ export default class User {
 
   @BeforeInsert()
   async hashPassword(): Promise<void> {
-    this.password = await bcrypt.hash(this.password, 10);
+    this.password = await bcrypt.hash(this.password, 4);
   }
 
-  toResponseObject(showToken = true): object {
+  getResponse(): AuthResponse {
     const { email, token, id } = this;
-    const responseObject = { user: { id, email }, token };
-    if (showToken) {
-      responseObject.token = token;
-    }
-    return responseObject;
+    return { user: { id, email }, token };
   }
 
   async comparePassword(attempt: string): Promise<boolean> {
@@ -64,7 +59,7 @@ export default class User {
         email,
       },
       process.env.SECRET,
-      { expiresIn: '7d' },
+      { expiresIn: process.env.JWT_EXP || '7d' },
     );
   }
 }

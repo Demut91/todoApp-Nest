@@ -1,11 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { typeOrmAsyncConfig } from './configs/typeorm.config';
+import { TodoModule } from './modules/Todo/todo.module';
 import { UserModule } from './modules/User/user.module';
-
 
 @Module({
   imports: [
@@ -19,9 +17,7 @@ import { UserModule } from './modules/User/user.module';
     }),
     TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
     UserModule,
-  ],
-  controllers: [AppController],
-  providers: [AppService],
-  exports: [AppService],
+    TodoModule
+  ]
 })
-export default class AppModule {}
+export default class AppModule { }
