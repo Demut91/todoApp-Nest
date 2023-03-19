@@ -1,6 +1,6 @@
 ### todoApp-Nest
 
-# ⚙️ To run project execute this commands:
+⚙️ To run project execute this commands:
 
 1. git clone https://github.com/Demut91/todoApp-Nest.git
 2. cd todoApp-Nest
@@ -15,4 +15,4 @@ SECRET=SECRET
 EOF
 4. docker-compose up
 
-# 🚀 API docs will be avialiable on `http://localhost:3000/api`
+🚀 API docs will be avialiable on `http://localhost:3000/api`
