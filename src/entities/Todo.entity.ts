@@ -1,33 +1,33 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  Generated,
-  ManyToOne,
-  UpdateDateColumn,
-} from 'typeorm';
-import User from './User.entity';
+// import {
+//   Column,
+//   CreateDateColumn,
+//   Entity,
+//   Generated,
+//   ManyToOne,
+//   UpdateDateColumn,
+// } from 'typeorm';
+// import User from './User.entity';
 
-@Entity()
-export default class Todo {
-  @Generated('increment')
-  id: number;
+// @Entity()
+// export default class Todo {
+//   @Generated('increment')
+//   id: number;
 
-  @Column()
-  title: string;
+//   @Column()
+//   title: string;
 
-  @Column()
-  description: string;
+//   @Column()
+//   description: string;
 
-  @Column()
-  isCompleted: boolean;
+//   @Column()
+//   isCompleted: boolean;
 
-  @ManyToOne(() => User, (u) => u.todos)
-  author: User;
+//   @ManyToOne(() => User, (u) => u.todos)
+//   author: User;
 
-  @CreateDateColumn()
-  createdAt: Date;
+//   @CreateDateColumn()
+//   createdAt: Date;
 
-  @UpdateDateColumn()
-  updatedAt: Date;
-}
+//   @UpdateDateColumn()
+//   updatedAt: Date;
+// }
