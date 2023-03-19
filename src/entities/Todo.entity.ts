@@ -18,7 +18,7 @@ export default class Todo {
 
   @Column({
     nullable: true,
-    type: 'text'
+    type: 'text',
   })
   description: string;
 

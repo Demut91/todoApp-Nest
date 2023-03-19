@@ -11,7 +11,7 @@ import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
 import Todo from './Todo.entity';
 import { IsEmail } from 'class-validator';
-import { AuthResponse } from 'src/types/response';
+import { AuthResponse } from 'src/types/authResponse';
 
 @Entity()
 export default class User {

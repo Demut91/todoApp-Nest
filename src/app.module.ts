@@ -17,7 +17,7 @@ import { UserModule } from './modules/User/user.module';
     }),
     TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
     UserModule,
-    TodoModule
-  ]
+    TodoModule,
+  ],
 })
-export default class AppModule { }
+export default class AppModule {}
