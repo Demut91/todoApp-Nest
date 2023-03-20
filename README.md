@@ -20,4 +20,6 @@ POSTGRES_DB=someDBname
 EOF  
 5. docker-compose up
 
-🚀 API docs will be avialiable on `http://localhost:3000/api`
+API docs will be avialiable on `http://localhost:3000/api`
+
+🚀 Project deployed on: `http://82.202.168.156:3000/api`
