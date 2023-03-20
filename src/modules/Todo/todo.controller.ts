@@ -9,7 +9,7 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { ApiCreatedResponse, ApiForbiddenResponse, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiCreatedResponse, ApiForbiddenResponse, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { TodoService } from './todo.service';
 import { TodoDto, TodoEditDto } from 'src/dto/todo.dto';
 import { Request } from 'express';
@@ -38,6 +38,7 @@ export class TodoController {
     }
   }
 
+  @ApiBearerAuth()
   @Post('/add')
   @ApiOperation({ summary: 'Create a new todo' })
   @ApiCreatedResponse({ description: 'Todo created succesfully' })
@@ -51,6 +52,7 @@ export class TodoController {
     else throw new BadRequestException('Wrong auth token format!');
   }
 
+  @ApiBearerAuth()
   @Get()
   @ApiOperation({ summary: 'Get my todos' })
   @ApiOkResponse({ description: 'Todo were returned successfully' })
@@ -61,6 +63,7 @@ export class TodoController {
     else throw new BadRequestException('Wrong auth token format!');
   }
 
+  @ApiBearerAuth()
   @Patch('/:id')
   @ApiOperation({ summary: 'Edit my todo' })
   @ApiOkResponse({ description: 'The todo was updated successfully' })
@@ -75,6 +78,7 @@ export class TodoController {
     else throw new BadRequestException('Wrong auth token format!');
   }
 
+  @ApiBearerAuth()
   @Delete('/:id')
   @ApiOperation({ summary: 'Delete my todo' })
   @ApiOkResponse({ description: 'The todo was deleted successfully' })
