@@ -13,6 +13,11 @@ POSTGRES_DB=someDBname
 JWT_EXP=1h  
 SECRET=SECRET  
 EOF  
-4. docker-compose up
+4. cat << EOF > docker.env  
+POSTGRES_USER=somename  
+POSTGRES_PASSWORD=somepass  
+POSTGRES_DB=someDBname   
+EOF  
+5. docker-compose up
 
 🚀 API docs will be avialiable on `http://localhost:3000/api`
